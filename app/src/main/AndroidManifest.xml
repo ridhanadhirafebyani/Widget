@@ -9,10 +9,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+
         <provider
             android:name=".provider.PlantContentProvider"
             android:authorities="com.example.android.mygarden"
             android:exported="true" />
+
+        <receiver android:name=".PlantWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/plant_widget_info" />
+        </receiver>
 
         <activity
             android:name=".ui.MainActivity"
