@@ -65,7 +65,7 @@ public class AddPlantActivity extends AppCompatActivity {
         finish();
     }
 
-    public ContentValues getContentValues(int plantType, long timeNow){
+    private ContentValues getContentValues(int plantType, long timeNow){
         ContentValues contentValues = new ContentValues();
         contentValues.put(PlantContract.PlantEntry.COLUMN_PLANT_TYPE, plantType);
         contentValues.put(PlantContract.PlantEntry.COLUMN_CREATION_TIME, timeNow);

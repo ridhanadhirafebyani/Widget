@@ -104,7 +104,7 @@ class GridRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
 
     }
 
-    public Intent getFillInIntent(long plantId){
+    private Intent getFillInIntent(long plantId){
         Bundle extras = new Bundle();
         extras.putLong(PlantDetailActivity.EXTRA_PLANT_ID, plantId);
         Intent intent = new Intent();
