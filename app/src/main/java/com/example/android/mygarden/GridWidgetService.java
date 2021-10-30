@@ -96,14 +96,20 @@ class GridRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
         views.setViewVisibility(R.id.widget_water_button, View.GONE);
 
         // Fill in the onClick PendingIntent Template using the specific plant Id for each item individually
-        Bundle extras = new Bundle();
-        extras.putLong(PlantDetailActivity.EXTRA_PLANT_ID, plantId);
-        Intent fillInIntent = new Intent();
-        fillInIntent.putExtras(extras);
+      
+        Intent fillInIntent = getFillInIntent(plantId)
         views.setOnClickFillInIntent(R.id.widget_plant_image, fillInIntent);
 
         return views;
 
+    }
+
+    private Intent getFillInIntent(long plantId){
+        Bundle extras = new Bundle();
+        extras.putLong(PlantDetailActivity.EXTRA_PLANT_ID, plantId);
+        Intent intent = new Intent();
+        intent.putExtras(extras);
+        return intent;
     }
 
     @Override

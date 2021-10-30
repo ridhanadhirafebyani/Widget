@@ -59,13 +59,18 @@ public class AddPlantActivity extends AppCompatActivity {
         int plantType = (int) imgView.getTag();
         long timeNow = System.currentTimeMillis();
         // Insert the new plant into DB
+        ContentValues contentValues = getContentValues(plantType, timeNow);
+        getContentResolver().insert(PlantContract.PlantEntry.CONTENT_URI, contentValues);
+        // Close this activity
+        finish();
+    }
+
+    private ContentValues getContentValues(int plantType, long timeNow){
         ContentValues contentValues = new ContentValues();
         contentValues.put(PlantContract.PlantEntry.COLUMN_PLANT_TYPE, plantType);
         contentValues.put(PlantContract.PlantEntry.COLUMN_CREATION_TIME, timeNow);
         contentValues.put(PlantContract.PlantEntry.COLUMN_LAST_WATERED_TIME, timeNow);
-        getContentResolver().insert(PlantContract.PlantEntry.CONTENT_URI, contentValues);
-        // Close this activity
-        finish();
+        return contentValues;
     }
 
     public void onBackButtonClick(View view) {
